@@ -3,3 +3,12 @@
  * E-Mail: whenhan@foxmail.com
  * File Name: reducers
  */
+
+import global from './global';
+const reducers = {
+  global
+};
+
+
+
+export default reducers;
