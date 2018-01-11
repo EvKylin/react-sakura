@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Icon } from 'antd';
 import DocumentTitle from 'react-document-title';
-//import { connect } from 'dva';
+import { connect } from 'react-redux';
 //import { Route, Redirect, Switch } from 'dva/router';
 import {Route, Redirect, Switch } from 'react-router-dom';
 import { ContainerQuery } from 'react-container-query';
@@ -157,12 +157,10 @@ class BasicLayout extends React.PureComponent {
     );
   }
 }
-export default BasicLayout;
-/*
+//export default BasicLayout;
 export default connect(state => ({
-  currentUser: state.user.currentUser,
+ // currentUser: state.user.currentUser,
   collapsed: state.global.collapsed,
-  fetchingNotices: state.global.fetchingNotices,
-  notices: state.global.notices,
+  //fetchingNotices: state.global.fetchingNotices,
+  //notices: state.global.notices,
 }))(BasicLayout);
-*/
