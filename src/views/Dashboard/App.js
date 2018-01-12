@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux'
 import logo from '../../assets/logo-react.svg';
-import './App.css';
+import style from './App.css';
 import {Button} from 'antd';
 
 class App extends Component {
@@ -13,12 +13,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h1 className="App-title">Welcome to React</h1>
+      <div className={style.App}>
+        <header className={style.AppHeader}>
+          <img src={logo} className={style.AppLogo} alt="logo"/>
+          <h1 className={style.AppTitle}>Welcome to React</h1>
         </header>
-        <p className="App-intro">
+        <p className={style.AppIntro}>
           <Button type="primary" onClick={() => this.props.dispatch({
             type: 'global/changeLayoutCollapsed',
             payload: !this.props.collapsed
