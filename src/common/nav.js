@@ -62,6 +62,16 @@ export const getNavData = app => [
             path: 'basic-form',
             component: dynamicWrapper(app, ['form'], () => import('../views/Forms/BasicForm')),
           },
+          {
+            name: '自定义测试',
+            path: 'test-rich-text-editor',
+            component: dynamicWrapper(app, ['form'], () => import('../views/Forms/TestRichTextEditor')),
+          },
+          {
+            name: '富文本编辑-Quill',
+            path: 'quill-rich-text-editor',
+            component: dynamicWrapper(app, ['form'], () => import('../views/Forms/QuillRichTextEditor')),
+          },
           /*{
             name: '分步表单',
             path: 'step-form',
@@ -105,18 +115,18 @@ export const getNavData = app => [
           {
             name: '403',
             path: '403',
-            component: dynamicWrapper(app, [], () => <div>403</div>),
+            component: dynamicWrapper(app, [], () => import('../views/Exception/403')),
           },
-  /*        {
+          {
             name: '404',
             path: '404',
-            component: dynamicWrapper(app, [], () => import('../routes/Exception/404')),
+            component: dynamicWrapper(app, [], () => import('../views/Exception/404')),
           },
           {
             name: '500',
             path: '500',
-            component: dynamicWrapper(app, [], () => import('../routes/Exception/500')),
-          },*/
+            component: dynamicWrapper(app, [], () => import('../views/Exception/500')),
+          },
         ],
       },
     ],
