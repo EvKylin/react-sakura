@@ -1,12 +1,9 @@
-// @import "~antd/lib/style/themes/default.less";
-
-$menu-collapsed-width: 80px;
+@import "../../style/themes/default";
 .logo {
   height: 64px;
   position: relative;
   line-height: 64px;
-  // @menu-collapsed-width: 80px
-  //padding-left: (@menu-collapsed-width - 32px) / 2;
+  // $menu-collapsed-width: 80px
   padding-left: ($menu-collapsed-width - 32px) / 2;
   transition: all .3s;
   background: #002140;
@@ -15,7 +12,6 @@ $menu-collapsed-width: 80px;
     display: inline-block;
     vertical-align: middle;
     height: 32px;
-    //margin-right: 22px;
   }
   h1 {
     color: #fff;
@@ -30,7 +26,6 @@ $menu-collapsed-width: 80px;
 
 .sider {
   min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
   position: relative;
   z-index: 10;
 }
