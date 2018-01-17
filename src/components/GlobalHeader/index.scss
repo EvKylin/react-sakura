@@ -1,4 +1,4 @@
-//@import "~antd/lib/style/themes/default.less";
+@import "../../style/themes/default";
 
 .header {
   padding: 0 12px 0 0;
@@ -29,15 +29,15 @@ i.trigger {
   transition: all .3s;
   padding: 0 24px;
   &:hover {
-    //background: @primary-1;
+    background: $primary-1;
   }
 }
 
-/*@media screen and (max-width: @screen-xs) {
+@media screen and (max-width: $screen-xs) {
   .trigger {
     display: none;
   }
-}*/
+}
 
 .right {
   float: right;
@@ -54,7 +54,7 @@ i.trigger {
     }
     &:global(.ant-popover-open),
     &:hover {
-     // background: @primary-1;
+      background: $primary-1;
     }
   }
   .search {
@@ -67,7 +67,7 @@ i.trigger {
   .account {
     .avatar {
       margin: 20px 8px 20px 0;
-     // color: @primary-color;
+      color: $primary-color;
       background: rgba(255, 255, 255, .85);
       vertical-align: middle;
     }
