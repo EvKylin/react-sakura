@@ -100,11 +100,11 @@ export const getNavData = app => [
             path: 'success',
             component: dynamicWrapper(app, [], () => <div>Success</div>),
           },
-     /*     {
-            name: '失败',
-            path: 'fail',
-            component: dynamicWrapper(app, [], () => import('../routes/Result/Error')),
-          },*/
+          /*     {
+                 name: '失败',
+                 path: 'fail',
+                 component: dynamicWrapper(app, [], () => import('../routes/Result/Error')),
+               },*/
         ],
       },
       {
@@ -131,7 +131,7 @@ export const getNavData = app => [
       },
     ],
   },
- /* {
+  {
     component: dynamicWrapper(app, [], () => import('../layouts/UserLayout')),
     path: '/user',
     layout: 'UserLayout',
@@ -144,23 +144,23 @@ export const getNavData = app => [
           {
             name: '登录',
             path: 'login',
-            component: dynamicWrapper(app, ['login'], () => <div>login</div>),
+            component: dynamicWrapper(app, ['login'], () => import('../views/User/SignIn')),
           },
-   /!*       {
-            name: '注册',
-            path: 'register',
-            component: dynamicWrapper(app, ['register'], () => import('../routes/User/Register')),
-          },
-          {
-            name: '注册结果',
-            path: 'register-result',
-            component: dynamicWrapper(app, [], () => import('../routes/User/RegisterResult')),
-          },*!/
+           {
+              name: '注册',
+              path: 'register',
+              component: dynamicWrapper(app, ['register'], () => import('../views/User/SignUp')),
+            },
+            {
+              name: '注册结果',
+              path: 'register-result',
+              component: dynamicWrapper(app, [], () => import('../views/User/SignResult')),
+            },
         ],
       },
     ],
   },
-  {
+  /*  {
     component: dynamicWrapper(app, [], () => import('../layouts/BlankLayout')),
     layout: 'BlankLayout',
     children: {
