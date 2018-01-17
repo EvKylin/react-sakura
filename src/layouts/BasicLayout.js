@@ -10,14 +10,13 @@ import PropTypes from 'prop-types';
 import { Layout, Icon } from 'antd';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'react-redux';
-//import { Route, Redirect, Switch } from 'dva/router';
 import {Route, Redirect, Switch } from 'react-router-dom';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import GlobalHeader from '../components/GlobalHeader';
-//import GlobalFooter from '../components/GlobalFooter';
+import GlobalFooter from '../components/GlobalFooter';
 import SiderMenu from '../components/SiderMenu';
-//import NotFound from '../routes/Exception/404';
+import NotFound from '../views/Exception/404';
 
 const { Content } = Layout;
 
@@ -120,15 +119,11 @@ class BasicLayout extends React.PureComponent {
                   )
                 }
                 <Redirect exact from="/" to="/dashboard/analysis" />
-               {/* <Route component={NotFound} />*/}
+                <Route component={NotFound} />
               </Switch>
             </div>
-           {/* <GlobalFooter
+            <GlobalFooter
               links={[{
-                title: 'Pro 首页',
-                href: 'http://pro.ant.design',
-                blankTarget: true,
-              }, {
                 title: 'GitHub',
                 href: 'https://github.com/ant-design/ant-design-pro',
                 blankTarget: true,
@@ -137,12 +132,8 @@ class BasicLayout extends React.PureComponent {
                 href: 'http://ant.design',
                 blankTarget: true,
               }]}
-              copyright={
-                <div>
-                  Copyright <Icon type="copyright" /> 2017 蚂蚁金服体验技术部出品
-                </div>
-              }
-            />*/}
+              copyright={<div>Copyright <Icon type="copyright" /> 2017 蚂蚁金服体验技术部出品</div>}
+            />
           </Content>
         </Layout>
       </Layout>
@@ -159,8 +150,8 @@ class BasicLayout extends React.PureComponent {
 }
 //export default BasicLayout;
 export default connect(state => ({
- // currentUser: state.user.currentUser,
+  currentUser: state.user.currentUser,
   collapsed: state.global.collapsed,
-  //fetchingNotices: state.global.fetchingNotices,
+  fetchingNotices: state.global.fetchingNotices,
   //notices: state.global.notices,
 }))(BasicLayout);

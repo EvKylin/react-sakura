@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import {Switch, Route} from 'react-router-dom';
 import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux';
-import './index.css';
+import './index.scss';
 import cloneDeep from 'lodash/cloneDeep';
 import registerServiceWorker from './registerServiceWorker';
 
