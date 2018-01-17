@@ -5,8 +5,10 @@
  */
 
 import global from './global';
+import user from './user';
 const reducers = {
-  global
+  global,
+  user
 };
 
 
