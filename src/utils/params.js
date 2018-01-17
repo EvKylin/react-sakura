@@ -2,7 +2,7 @@
  * Created by QiHan Wang on 2017/5/27.
  */
 // SearchParams 查询段转为object
-function searchs(search) {
+/*function searchs(search) {
   let obj = {};
   const params = (search.split('?')[1]).split('&');
   for (let i = 0; i < params.length; i++) {
@@ -10,6 +10,10 @@ function searchs(search) {
     obj[param[0]] = decodeURIComponent(param[1]);
   }
   return obj;
+}*/
+
+function searchs(url) {
+  return url.match(/([^?=&]+)(=([^&]*))/g).reduce((a, v) => (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a), {})
 }
 
 // 根据名称获取查询字段值
