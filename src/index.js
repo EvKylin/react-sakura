@@ -84,7 +84,7 @@ function getLayout(navData, path) {
 
 
 const navData = getNavData();
-//const UserLayout = getLayout(navData, 'UserLayout').component;
+const UserLayout = getLayout(navData, 'UserLayout').component;
 const BasicLayout = getLayout(navData, 'BasicLayout').component;
 
 const passProps = {
@@ -99,7 +99,7 @@ ReactDOM.render(
     {/* ConnectedRouter will use the store from Provider automatically */}
     <ConnectedRouter history={history}>
       <Switch>
-        {/* <Route path="/user" render={props => <UserLayout {...props} {...passProps} />}/>*/}
+        {/*<Route path="/user" render={props => <UserLayout {...props} {...passProps} />}/>*/}
         <Route path="/" render={props => <BasicLayout {...props} {...passProps} />}/>
       </Switch>
     </ConnectedRouter>
