@@ -33,7 +33,7 @@ const cssLoader = (modules) => {
     ...baseOptions,
     modules: true,
     localIdentName: '[local]--[hash:base64:8]'
-  }: baseOptions;
+  } : baseOptions;
 
   return [
     require.resolve('style-loader'),
@@ -48,6 +48,7 @@ module.exports = {
   ruleCssModules: {
     test: /\.s?css$/,
     include: paths.appSrc,
+    exclude: paths.appSrc + 'index.scss',
     use: [
       ...cssLoader(true),
       postCss,
