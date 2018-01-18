@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route,Switch, Redirect} from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import { Icon } from 'antd';
 import GlobalFooter from '../components/GlobalFooter';
 import styles from './UserLayout.scss';
 import logo from '../assets/logo.svg';
+import NotFound from "../views/Exception/404";
 
 const links = [{
   title: '帮助',
@@ -54,18 +55,22 @@ class UserLayout extends React.PureComponent {
             </div>
             <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
           </div>
-          {
-            getRouteData('UserLayout').map(item =>
-              (
-                <Route
-                  exact={item.exact}
-                  key={item.path}
-                  path={item.path}
-                  component={item.component}
-                />
+          <Switch>
+            {
+              getRouteData('UserLayout').map(item =>
+                (
+                  <Route
+                    exact={item.exact}
+                    key={item.path}
+                    path={item.path}
+                    component={item.component}
+                  />
+                )
               )
-            )
-          }
+            }
+            <Redirect exact from="/user" to="/user/login" />
+            <Route component={NotFound} />
+          </Switch>
           <GlobalFooter className={styles.footer} links={links} copyright={copyright} />
         </div>
       </DocumentTitle>

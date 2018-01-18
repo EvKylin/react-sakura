@@ -126,16 +126,16 @@ export const getNavData = app => [
             path: 'login',
             component: dynamicWrapper(app, ['login'], () => import('../views/User/SignIn')),
           },
-           {
-              name: '注册',
-              path: 'register',
-              component: dynamicWrapper(app, ['register'], () => import('../views/User/SignUp')),
-            },
-            {
-              name: '注册结果',
-              path: 'register-result',
-              component: dynamicWrapper(app, [], () => import('../views/User/SignResult')),
-            },
+          {
+            name: '注册',
+            path: 'register',
+            component: dynamicWrapper(app, ['register'], () => import('../views/User/SignUp')),
+          },
+          {
+            name: '注册结果',
+            path: 'register-result',
+            component: dynamicWrapper(app, [], () => import('../views/User/SignResult')),
+          },
         ],
       },
     ],
