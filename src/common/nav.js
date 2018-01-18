@@ -48,29 +48,9 @@ export const getNavData = app => [
         icon: 'form',
         children: [
           {
-            name: '富文本编辑',
-            path: 'rich-text-editor',
-            component: dynamicWrapper(app, ['form'], () => import('../views/Forms/RichTextEditor')),
-          },
-          {
-            name: '富文本编辑-LZ',
-            path: 'lz-rich-text-editor',
-            component: dynamicWrapper(app, ['form'], () => import('../views/Forms/LzRichTextEditor')),
-          },
-          {
             name: '基础表单',
             path: 'basic-form',
             component: dynamicWrapper(app, ['form'], () => import('../views/Forms/BasicForm')),
-          },
-          {
-            name: '自定义测试',
-            path: 'test-rich-text-editor',
-            component: dynamicWrapper(app, ['form'], () => import('../views/Forms/TestRichTextEditor')),
-          },
-          {
-            name: '富文本编辑-Quill',
-            path: 'quill-rich-text-editor',
-            component: dynamicWrapper(app, ['form'], () => import('../views/Forms/QuillRichTextEditor')),
           },
           /*{
             name: '分步表单',
