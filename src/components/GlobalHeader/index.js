@@ -16,7 +16,7 @@ export default class GlobalHeader extends PureComponent {
     });*/
   }
   componentWillUnmount() {
-    this.triggerResizeEvent.cancel();
+    //this.triggerResizeEvent.cancel();
   }
   getNoticeData() {
     const { notices = [] } = this.props;

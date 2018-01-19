@@ -7,18 +7,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Icon } from 'antd';
+import {Layout, Icon} from 'antd';
 import DocumentTitle from 'react-document-title';
-import { connect } from 'react-redux';
-import {Route, Redirect, Switch } from 'react-router-dom';
-import { ContainerQuery } from 'react-container-query';
+import {connect} from 'react-redux';
+import {Route, Redirect, Switch} from 'react-router-dom';
+import {ContainerQuery} from 'react-container-query';
 import classNames from 'classnames';
 import GlobalHeader from '../components/GlobalHeader';
 import GlobalFooter from '../components/GlobalFooter';
 import SiderMenu from '../components/SiderMenu';
 import NotFound from '../views/Exception/404';
 
-const { Content } = Layout;
+const {Content} = Layout;
 
 const query = {
   'screen-xs': {
@@ -46,8 +46,9 @@ class BasicLayout extends React.PureComponent {
     location: PropTypes.object,
     breadcrumbNameMap: PropTypes.object,
   };
+
   getChildContext() {
-    const { location, navData, getRouteData } = this.props;
+    const {location, navData, getRouteData} = this.props;
     const routeData = getRouteData('BasicLayout');
     const firstMenuData = navData.reduce((arr, current) => arr.concat(current.children), []);
     const menuData = this.getMenuData(firstMenuData, '');
@@ -59,11 +60,12 @@ class BasicLayout extends React.PureComponent {
         component: item.component,
       };
     });
-    return { location, breadcrumbNameMap };
+    return {location, breadcrumbNameMap};
   }
+
   getPageTitle() {
-    const { location, getRouteData } = this.props;
-    const { pathname } = location;
+    const {location, getRouteData} = this.props;
+    const {pathname} = location;
     let title = 'Sakura UI';
     getRouteData('BasicLayout').forEach((item) => {
       if (item.path === pathname) {
@@ -72,20 +74,24 @@ class BasicLayout extends React.PureComponent {
     });
     return title;
   }
+
   getMenuData = (data, parentPath) => {
     let arr = [];
     data.forEach((item) => {
       if (item.children) {
-        arr.push({ path: `${parentPath}/${item.path}`, name: item.name });
+        arr.push({path: `${parentPath}/${item.path}`, name: item.name});
         arr = arr.concat(this.getMenuData(item.children, `${parentPath}/${item.path}`));
       }
     });
     return arr;
   };
+
   render() {
     const {
       currentUser, collapsed, fetchingNotices, notices, getRouteData, navData, location, dispatch,
     } = this.props;
+
+    console.log(currentUser.token)
 
     const layout = (
       <Layout>
@@ -103,8 +109,8 @@ class BasicLayout extends React.PureComponent {
             collapsed={collapsed}
             dispatch={dispatch}
           />
-          <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-            <div style={{ minHeight: 'calc(100vh - 260px)' }}>
+          <Content style={{margin: '24px 24px 0', height: '100%'}}>
+            <div style={{minHeight: 'calc(100vh - 260px)'}}>
               <Switch>
                 {
                   getRouteData('BasicLayout').map(item =>
@@ -118,8 +124,8 @@ class BasicLayout extends React.PureComponent {
                     )
                   )
                 }
-                <Redirect exact from="/" to="/dashboard/analysis" />
-                <Route component={NotFound} />
+                <Redirect exact from="/" to="/dashboard/analysis"/>
+                <Route component={NotFound}/>
               </Switch>
             </div>
             <GlobalFooter
@@ -132,7 +138,7 @@ class BasicLayout extends React.PureComponent {
                 href: 'http://ant.design',
                 blankTarget: true,
               }]}
-              copyright={<div>Copyright <Icon type="copyright" /> 2017 蚂蚁金服体验技术部出品</div>}
+              copyright={<div>Copyright <Icon type="copyright"/> 2017 蚂蚁金服体验技术部出品</div>}
             />
           </Content>
         </Layout>
@@ -142,12 +148,15 @@ class BasicLayout extends React.PureComponent {
     return (
       <DocumentTitle title={this.getPageTitle()}>
         <ContainerQuery query={query}>
-          {params => <div className={classNames(params)}>{layout}</div>}
+          {params => <div className={classNames(params)}>
+            {!currentUser.token ? layout : (<Redirect to="/user/login"/>)}
+          </div>}
         </ContainerQuery>
       </DocumentTitle>
     );
   }
 }
+
 //export default BasicLayout;
 export default connect(state => ({
   currentUser: state.user.currentUser,

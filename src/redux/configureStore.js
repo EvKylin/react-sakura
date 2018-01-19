@@ -5,11 +5,14 @@
  */
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {routerReducer, routerMiddleware} from 'react-router-redux';
-//import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers';
+import rootSaga from './sagas';
 
 
-const middlewares = [];
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
 
 if (process.env.NODE_ENV === `development`) {
   const {logger} = require(`redux-logger`);
@@ -24,11 +27,13 @@ export default function configureStore(history, initialState) {
    }), initialState)*/
   middlewares.push(routerMiddleware(history));
 
-  return createStore(
+  const store = createStore(
     combineReducers({
       ...reducers,
       router: routerReducer
     }),
     applyMiddleware(...middlewares)
-  )
+  );
+  sagaMiddleware.run(rootSaga);
+  return store;
 }
