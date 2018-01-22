@@ -4,24 +4,14 @@ import {push} from 'react-router-redux'
 import logo from '../../assets/logo-react.svg';
 import style from './App.css';
 import {Button} from 'antd';
+import Counter from './Counter';
 
-const Counter = ({value, onIncrement, onDecrement, onIncrementAsync}) =>
-  <div>
-    <button onClick={onIncrementAsync}>Increment after 1 second</button>
-    {' '}
-    <button onClick={onIncrement}>Increment</button>
-    {' '}
-    <button onClick={onDecrement}>Decrement</button>
-    <hr/>
-    <div>Clicked: {value} times</div>
-  </div>;
 
 class App extends Component {
   componentWillMount() {
     console.log(this.props)
 
-
-    fetch('http://10.10.12.92:3000/graphql?query=query%7B%0A%20%20allLinks%7B%0A%20%20%20%20id%0A%20%20%20%20url%0A%20%20%20%20description%0A%20%20%20%20postedBy%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20email%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D').then(res => {
+    fetch('http://10.10.12.92:4000/graphql?query=query%7B%0A%20%20allLinks%7B%0A%20%20%20%20id%0A%20%20%20%20url%0A%20%20%20%20description%0A%20%20%20%20postedBy%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20email%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D').then(res => {
     })
   }
 
@@ -42,9 +32,9 @@ class App extends Component {
 
           <Counter
             value={this.props.xxx}
-            onIncrement={() => this.props.dispatch({type: 'INCREMENT'})}
-            onDecrement={() => this.props.dispatch({type: 'DECREMENT'})}
-            onIncrementAsync={() => this.props.dispatch({type: 'INCREMENT_ASYNC'})}
+            onIncrement={this.props.dispatch({type: 'INCREMENT'})}
+            onDecrement={this.props.dispatch({type: 'DECREMENT'})}
+            onIncrementAsync={this.props.dispatch({type: 'INCREMENT_ASYNC'})}
           />
           <button onClick={() => this.props.dispatch({
             type: 'login', payload: {
