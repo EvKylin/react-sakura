@@ -17,6 +17,7 @@ class App extends Component {
 
 
   render() {
+    console.log(push)
     return (
       <div className={style.App}>
         <header className={style.AppHeader}>
@@ -30,20 +31,18 @@ class App extends Component {
           })}>sdf</Button>
           To get started, edit <code>src/App.js</code> and save to reload.
 
-          <Counter
-            value={this.props.xxx}
-            onIncrement={this.props.dispatch({type: 'INCREMENT'})}
-            onDecrement={this.props.dispatch({type: 'DECREMENT'})}
-            onIncrementAsync={this.props.dispatch({type: 'INCREMENT_ASYNC'})}
-          />
-          <button onClick={() => this.props.dispatch({
-            type: 'login', payload: {
-              name: 'iiii',
-              type: 5,
-            },
-          })}>sdfsf
-          </button>
+          <Button onClick={()=> this.props.dispatch(push('/user'))}>sdf</Button>
+          <Button onClick={() => this.props.dispatch({
+            type: 'login', payload: {name: 'iiii', type: 5,},
+          })}>Login</Button>
         </p>
+        <div>{this.props.a}</div>
+        <Counter
+          // value={this.props.xxx}
+          onIncrement={()=> this.props.dispatch({type: 'INCREMENT'})}
+          onDecrement={()=>this.props.dispatch({type: 'DECREMENT'})}
+          onIncrementAsync={()=>this.props.dispatch({type: 'INCREMENT_ASYNC'})}
+        />
       </div>
     );
   }
@@ -53,6 +52,7 @@ export default connect((state) => {
   console.log(state)
   return {
     //xxx: state.getState(),
+    a: state.login.changeLoginStatus,
     collapsed: state.global.collapsed
   }
 })(App);

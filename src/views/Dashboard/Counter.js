@@ -8,13 +8,14 @@ import React from 'react';
 import {Button} from 'antd';
 
 const Counter = ({value, onIncrement, onDecrement, onIncrementAsync}) =>
-  <div className={'sdfsdf'}>
+  (<div className={'sdfsdf'}>
     <Button onClick={onIncrementAsync}>Increment after 1 second</Button>
     {' '}
     <Button onClick={onIncrement}>Increment</Button>
     {' '}
     <Button onClick={onDecrement}>Decrement</Button>
-    <hr />
+    <hr/>
     <Button>Clicked: {value} times</Button>
-  </div>;
+  </div>);
+
 export default Counter;

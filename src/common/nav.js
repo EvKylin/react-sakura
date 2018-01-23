@@ -7,6 +7,7 @@ import React from 'react';
 //import dynamic from 'dva/dynamic';
 
 import Loadable from 'react-loadable';
+//import App from '../views/Dashboard/App';
 
 
 // wrapper of dynamic
