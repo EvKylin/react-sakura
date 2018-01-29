@@ -8,7 +8,7 @@ import React from 'react';
 import {Button} from 'antd';
 
 const Counter = ({value, onIncrement, onDecrement, onIncrementAsync}) =>
-  (<div className={'sdfsdf'}>
+  (<div>
     <Button onClick={onIncrementAsync}>Increment after 1 second</Button>
     {' '}
     <Button onClick={onIncrement}>Increment</Button>

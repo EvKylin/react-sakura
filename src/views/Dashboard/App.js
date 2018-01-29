@@ -17,7 +17,6 @@ class App extends Component {
 
 
   render() {
-    console.log(push)
     return (
       <div className={style.App}>
         <header className={style.AppHeader}>
@@ -28,13 +27,10 @@ class App extends Component {
           <Button type="primary" onClick={() => this.props.dispatch({
             type: 'global/changeLayoutCollapsed',
             payload: !this.props.collapsed
-          })}>sdf</Button>
+          })}>Hide SideMenu</Button>
           To get started, edit <code>src/App.js</code> and save to reload.
 
           <Button onClick={()=> this.props.dispatch(push('/user'))}>sdf</Button>
-          <Button onClick={() => this.props.dispatch({
-            type: 'login', payload: {name: 'iiii', type: 5,},
-          })}>Login</Button>
         </p>
         <div>{this.props.a}</div>
         <Counter

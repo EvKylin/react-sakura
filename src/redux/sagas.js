@@ -8,6 +8,7 @@ import {put, takeEvery, all, call} from 'redux-saga/effects';
 import {push} from 'react-router-redux'
 
 const api = async (params) => {
+  console.log(params)
   return fetch('http://10.10.12.92:4000/graphql?query=query%7B%0A%20%20allLinks%7B%0A%20%20%20%20id%0A%20%20%20%20url%0A%20%20%20%20description%0A%20%20%20%20postedBy%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20email%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D').then(response=>{
     return response.json();
   });
@@ -23,15 +24,12 @@ function* incrementAsync() {
   yield put({type: 'INCREMENT'})
 }
 
-
-
-
 function* watchIncrementAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
 
 function* login({ payload }) {
-  console.log(payload)
+  //console.log(payload)
   yield put({
     type: 'login/changeSubmitting',
     payload: true,
@@ -41,16 +39,14 @@ function* login({ payload }) {
     type: 'login/changeLoginStatus',
     payload: response,
   });
-  console.log(response)
-  yield put(push('/user/login'));
   // Login successfully
-  if (response.status === true) {
-    yield put(push('/user/login'));
+  if (response.status === 'ok' || response) {
+    yield put(push('/'));
   }
-};
+}
 
 function* watchLogin() {
-  yield takeEvery('login', login)
+  yield takeEvery('login/login', login)
 }
 
 

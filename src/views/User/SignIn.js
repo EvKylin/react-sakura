@@ -12,7 +12,7 @@ class SignIn extends Component {
   state = {
     count: 0,
     type: 'account',
-  }
+  };
 
   componentWillUnmount() {
     clearInterval(this.interval);
@@ -20,7 +20,7 @@ class SignIn extends Component {
 
   onSwitch = (type) => {
     this.setState({ type });
-  }
+  };
 
   onGetCaptcha = () => {
     let count = 59;
@@ -32,7 +32,7 @@ class SignIn extends Component {
         clearInterval(this.interval);
       }
     }, 1000);
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ class SignIn extends Component {
         }
       }
     );
-  }
+  };
 
   renderMessage = (message) => {
     return (
@@ -60,7 +60,7 @@ class SignIn extends Component {
         showIcon
       />
     );
-  }
+  };
 
   render() {
     const { form, login } = this.props;
