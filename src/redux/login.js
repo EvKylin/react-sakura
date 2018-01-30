@@ -1,5 +1,5 @@
 const reducers = {
-  changeLoginStatus(state, {payload}) {
+  'login/changeLoginStatus': (state, {payload}) => {
     return {
       ...state,
       status: payload.status,
@@ -7,7 +7,7 @@ const reducers = {
       submitting: false,
     };
   },
-  changeSubmitting(state, {payload}) {
+  'login/changeSubmitting':(state, {payload})=> {
     return {
       ...state,
       submitting: payload,
@@ -18,7 +18,7 @@ const reducers = {
 export default function login(user = {
   status: undefined,
 }, action) {
-  const handler = reducers[action.type.split('/')[1]];
+  const handler = reducers[action.type];
 
   return handler ? handler(login, action) : login
 }

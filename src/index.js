@@ -93,6 +93,8 @@ const passProps = {
     return getRouteData(navData, path);
   },
 };
+
+console.log(store)
 // <Router history={history}>
 ReactDOM.render(
   <Provider store={store}>

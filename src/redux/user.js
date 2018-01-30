@@ -4,25 +4,25 @@
  * File Name: user
  */
 const reducers = {
-  save(state, action) {
+  'user/save':(state, action) =>{
     return {
       ...state,
       list: action.payload,
     };
   },
-  changeLoading(state, action) {
+  'user/changeLoading': (state, action) =>{
     return {
       ...state,
       loading: action.payload,
     };
   },
-  saveCurrentUser(state, action) {
+  'user/saveCurrentUser': (state, action) =>{
     return {
       ...state,
       currentUser: action.payload,
     };
   },
-  changeNotifyCount(state, action) {
+  'user/changeNotifyCount': (state, action) =>{
     return {
       ...state,
       currentUser: {
@@ -37,7 +37,7 @@ export default function user(user = {
   loading: false,
   currentUser: {},
 }, action) {
-  const handler = reducers[action.type.split('/')[1]];
+  const handler = reducers[action.type];
 
   return handler ? handler(user, action) : user
 }
