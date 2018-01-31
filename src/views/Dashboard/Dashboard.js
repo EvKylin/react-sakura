@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux'
 import logo from '../../assets/logo-react.svg';
-import style from './App.css';
+import style from './Dashboard.css';
 import {Button} from 'antd';
 import Counter from './Counter';
 
 
-class App extends Component {
+class Dashboard extends Component {
   componentWillMount() {
     console.log(this.props)
 
@@ -45,10 +45,10 @@ class App extends Component {
 }
 
 export default connect((state) => {
-  console.log(state)
   return {
     //xxx: state.getState(),
     a: state.login.changeLoginStatus,
     collapsed: state.global.collapsed
   }
-})(App);
+})(Dashboard);
+

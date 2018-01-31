@@ -39,7 +39,7 @@ export const getNavData = app => [
           {
             name: '分析页',
             path: 'analysis',
-            component: dynamicWrapper(app, ['chart'], () => import('../views/Dashboard/App')),
+            component: dynamicWrapper(app, ['chart'], () => import('../views/Dashboard/Dashboard')),
           },
         ],
       },
