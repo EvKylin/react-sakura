@@ -1,43 +1,59 @@
-/**
- * Created by QiHan Wang on 2018/1/17.
- * E-Mail: whenhan@foxmail.com
- * File Name: user
- */
-const reducers = {
-  'user/save':(state, action) =>{
-    return {
-      ...state,
-      list: action.payload,
-    };
-  },
-  'user/changeLoading': (state, action) =>{
-    return {
-      ...state,
-      loading: action.payload,
-    };
-  },
-  'user/saveCurrentUser': (state, action) =>{
-    return {
-      ...state,
-      currentUser: action.payload,
-    };
-  },
-  'user/changeNotifyCount': (state, action) =>{
-    return {
-      ...state,
-      currentUser: {
-        ...state.currentUser,
-        notifyCount: action.payload,
-      },
-    };
-  },
-};
-export default function user(user = {
-  list: [],
-  loading: false,
-  currentUser: {},
-}, action) {
-  const handler = reducers[action.type];
+import { put, takeEvery, all, call } from "redux-saga/effects";
 
-  return handler ? handler(user, action) : user
-}
+const models = {
+  namespace: "user",
+  state: {
+    list: [],
+    loading: false,
+    currentUser: {}
+  },
+  reducers: {
+    save: (state, action) => {
+      return {
+        ...state,
+        list: action.payload
+      };
+    },
+    changeLoading: (state, action) => {
+      return {
+        ...state,
+        loading: action.payload
+      };
+    },
+    saveCurrentUser: (state, action) => {
+      return {
+        ...state,
+        currentUser: action.payload
+      };
+    },
+    changeNotifyCount: (state, action) => {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          notifyCount: action.payload
+        }
+      };
+    }
+  },
+  effects: {}
+};
+
+// Reducer
+const reducerMethods = (state = models.state, action) => {
+  const reducers = {};
+  Object.keys(models.reducers).forEach(key => {
+    reducers[`${models.namespace}/${key}`] = models.reducers[key];
+  });
+  const handler = reducers[action.type];
+  return handler ? handler(state, action) : state;
+};
+
+// Sagas
+const sagasWatch = Object.keys(models.effects).map(key => {
+  return (function*() {
+    yield takeEvery(`${models.namespace}/${key}`, models.effects[key]);
+  })();
+});
+
+export { reducerMethods, sagasWatch };
